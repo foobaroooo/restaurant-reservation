@@ -25,54 +25,55 @@ function App() {
     setShowPeopleCountPicker(true)
   }
 
-  const handlePickPeopleCount = (count: number) => {
+  const handleChangePeopleCount = (count: number) => {
     setBookingInfo({
       count: count
     })
+
+    setShowPeopleCountPicker(false);
   }
 
   return (
     <main>
       { !showBookingForm &&
-        <Button className="btn" onClick={ handleBook }>Book a table</Button>
+      <Button className="btn" onClick={ handleBook }>Book a table</Button>
       }
 
       { showBookingForm &&
-        <Fieldset className="space-y-8 bg-blue-100 rounded-lg p-10 w-full text-black">
-          <Legend className="text-lg font-bold text-left">Book a table</Legend>
-          <Field>
-            <Label className="label w-full">
-              <span className="w-30 text-black">People</span>
-              <Input className="input w-full" id="count" name="count" 
-                readOnly 
-                onClick={ handleShowPeopleCountPicker }
-                value={ bookingInfo.count ?? "" }
-              />
-            </Label>
-          </Field>
-          <Field>
-            <Label className="label w-full">
-              <span className="w-30 text-black">Date</span>
-              <Input className="input w-full" type="date" id="date" name="date" />
-            </Label>
-          </Field>
-          <Field>
-            <Label className="label w-full">
-              <span className="w-30 text-black">Time</span>
-              <Input className="input w-full" id="time" name="time" type="time" />
-            </Label>
-          </Field>
-          <Button className="btn">
-            Book now
-          </Button>
-        </Fieldset>
+      <Fieldset className="space-y-8 bg-blue-100 rounded-lg p-10 w-full text-black">
+        <Legend className="text-lg font-bold text-left">Book a table</Legend>
+        <Field>
+          <Label className="label w-full">
+            <span className="w-30 text-black">People</span>
+            <Input className="input w-full" id="count" name="count" 
+            readOnly 
+            onClick={ handleShowPeopleCountPicker }
+            value={ bookingInfo.count ?? "" }
+          />
+          </Label>
+          { showPeopleCountPicker && 
+            <div style={{ position: 'absolute', zIndex: 100 }}>
+              <PeopleCountPicker onChangePeopleCount={ handleChangePeopleCount } />
+            </div>
+          }
+        </Field>
+        <Field>
+          <Label className="label w-full">
+            <span className="w-30 text-black">Date</span>
+            <Input className="input w-full" type="date" id="date" name="date" />
+          </Label>
+        </Field>
+        <Field>
+          <Label className="label w-full">
+            <span className="w-30 text-black">Time</span>
+            <Input className="input w-full" id="time" name="time" type="time" />
+          </Label>
+        </Field>
+        <Button className="btn">
+          Book now
+        </Button>
+      </Fieldset>
       }
-
-
-      { showPeopleCountPicker && 
-        <PeopleCountPicker onPickPeopleCount={ handlePickPeopleCount } />
-      }
-
     </main>
   )
 }
