@@ -1,12 +1,24 @@
 import { Field, Fieldset, Input, Label, Legend, Button } from '@headlessui/react'
 import { BookingInfoType } from '../BookingInfoType'
+import { FormEvent } from 'react'
 
 interface BookingConfirmFormProps {
     bookingInfo: BookingInfoType
 }
 
 export default function BookingConfirmForm({ bookingInfo } : BookingConfirmFormProps ) {
-    const handleBookingConfirmSubmit = () => {
+    const handleBookingConfirmSubmit = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        const formData = new FormData(e.currentTarget);
+        
+        // setBookingInfo({
+        //     count: parseInt(formData.get("count") as string, 10) || 0,
+        //     date: formData.get("date") as string,
+        //     time: formData.get("time") as string,
+        //     name: formData.get("name") as string,
+        //     phone: formData.get("phone") as string,
+        //   })
     }
 
     return (
@@ -24,7 +36,7 @@ export default function BookingConfirmForm({ bookingInfo } : BookingConfirmFormP
                     <Label className="label w-full">Phone</Label>
                     <Input className="input w-full bg-white border-gray-300" id="phone" name="phone" type="text" />
                 </Field>
-                <Field className="text-left">
+                <Field>
                     <Button className="btn" type="submit">
                         Confirm reservation
                     </Button>

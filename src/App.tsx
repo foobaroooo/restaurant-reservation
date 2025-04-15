@@ -12,7 +12,9 @@ function App() {
   const [bookingInfo, setBookingInfo] = useState<BookingInfoType>({
     count: 0,
     date: "",
-    time: ""
+    time: "",
+    name: "",
+    phone: ""
   });
 
   const handleBook = (e: FormEvent) => {
@@ -33,7 +35,9 @@ function App() {
     setBookingInfo({
       count: count,
       date: bookingInfo.date,
-      time: bookingInfo.time
+      time: bookingInfo.time,
+      name: bookingInfo.name,
+      phone: bookingInfo.phone
     })
 
     setShowPeopleCountPicker(false);
@@ -47,7 +51,9 @@ function App() {
     setBookingInfo({
       count: parseInt(formData.get("count") as string, 10) || 0,
       date: formData.get("date") as string,
-      time: formData.get("time") as string
+      time: formData.get("time") as string,
+      name: "",
+      phone: ""
     })
 
     setShowBookingForm(false);
