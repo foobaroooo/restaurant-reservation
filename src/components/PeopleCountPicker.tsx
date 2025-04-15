@@ -12,11 +12,11 @@ export default function PeopleCountPicker( { onChangePeopleCount } : PeopleCount
     }
 
     return (
-        <ul id="peopleCount" className="flex flex-wrap bg-blue-100 rounded-lg p-5 m-5 text-black shadow-lg shadow-gray-500">
+        <ul id="peopleCount" className="flex flex-wrap bg-blue-50 rounded-lg p-5 text-black shadow-lg shadow-gray-500">
         {
             Array.from({ length: maxCount }, (value, index) => (
-                <li key={index+1} className="flex flex-col w-1/5 rounded border-2 border-gray-400 p-5 justify-center">
-                    <Button onClick={ handleChangePeopleCount }>{index+1}</Button>
+                <li key={index+1} className="flex flex-col w-1/5 rounded border-2 border-gray-300 justify-center">
+                    <Button className="bg-white w-full p-5" onClick={ handleChangePeopleCount }>{index+1}</Button>
                 </li>
             ))
         }   
