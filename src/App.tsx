@@ -1,5 +1,5 @@
-import { FormEvent, useState } from 'react'
 import './App.css'
+import { FormEvent, useState } from 'react'
 import { Field, Fieldset, Input, Label, Legend, Button } from '@headlessui/react'
 import PeopleCountPicker from './components/PeopleCountPicker'
 import BookingConfirmForm from './components/BookingConfirmForm'
